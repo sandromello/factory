@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+DEFAULT_RUNTIME_VERSION=6.11.0
+BUILD_DIR=$1
+
+# Exit early if app is clearly not Node.js.
+if [ ! -f $BUILD_DIR/package.json ]; then
+  exit 1
+fi
+
+cat $BUILD_DIR/package.json | jq -e -r '.engines.node | select(. == null | not)' || echo $DEFAULT_RUNTIME_VERSION

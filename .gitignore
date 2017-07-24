@@ -1,4 +1,3 @@
 .vscode
 vendor
-packs
 pkg/pack/generated/files.go

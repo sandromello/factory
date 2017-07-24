@@ -4,11 +4,11 @@ Create detectable buildpacks templates with docker images.
 
 Factory allows detecting source code using scripts with Dockerfile templates.
 
-> *Important:* This is an experimental project yet.
+> *Important:* This is an experimental project.
 
 ## How it Works
 
-The folder `./packs` contains folders containing the language runtimes with two files: 
+The folder `./examples/packs` contains folders containing the language runtimes with two files: 
 
   - `<runtime>/Dockerfile`
   - `<runtime>/detect`
@@ -16,7 +16,7 @@ The folder `./packs` contains folders containing the language runtimes with two 
 The `Dockerfile` file could be defined with a GO template entry `{{ .Version }}` which will be populated dynamically by a script.
 The `detect` file it's a bash script which contains logic to identify the language and the semantic version of the source code.
 
-When factory starts it executes each `detect` script from the `packs` folder trying to detect the 
+When factory starts it executes each `detect` script from the `./packs` folder trying to detect the 
 source code. When a match is detected (exit code 0), the script must print the semantic version of the detected language which
 will be injected into the respective Dockerfile, corresponding to a specific existent docker image version.
 
