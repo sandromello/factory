@@ -36,26 +36,6 @@ const (
 	gitOauthTokenFilePath = secretsPath + "/.git-oauth-token"
 )
 
-// TODO: accept basic and oauth authentication on cloning
-// TODO: verify if the repo has a Dockerfile
-// TODO: detect types of languages (buildpacks): https://github.com/cloud66/starter
-// TODO: parse Procfile and use it as ENTRYPOINT
-
-// - Identify the code language: https://github.com/Azure/draft/issues/205
-// - Build
-// - Install dependencies packages for each language (python, php, nodejs, ruby, go)
-// - Push to registry
-// - Parse Procfile and run as command inside the image (Procfile is anallogous to CMD in a Dockefile)
-// - Ignore Dockefile of the user*
-// - Detect languages and use Dockefile templates
-
-// If contain a Dockefile verifies if it's a platform ONE, validing the `FROM`
-// Don't let it run as ROOT!
-
-// Create a Procfile parser for every pack
-// Add inside kubernetes (fallback retrieving git and registry credentials inside secrets!)
-// Add semantic versioning parser
-
 func init() {
 	pflag.CommandLine.AddGoFlagSet(flag.CommandLine)
 	pflag.StringVar(&cfg.DockerAddr, "docker-addr", "unix:///var/run/docker.sock", "the address the docker engine listens on")
